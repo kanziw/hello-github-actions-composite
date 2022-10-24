@@ -21,3 +21,9 @@ runs:
         echo "o1=O1O1O1" >> $GITHUB_OUTPUT
         echo "o2=O2O2O2" >> $GITHUB_OUTPUT
       shell: bash
+    - run: echo "${{ github }}"
+      shell: bash
+    - uses: actions/github-script@v6
+      with:
+        script: |
+          console.log(JSON.stringify(context, null, 2))
