@@ -4,6 +4,9 @@ inputs:
   target-directory:
     description: 'Where to archive the files'
     required: true
+  api-key:
+    description: 'API key for the service'
+    required: true
 outputs:
   o1:
     description: "OUTPUT 1"
@@ -21,7 +24,7 @@ runs:
         echo "o1=O1O1O1" >> $GITHUB_OUTPUT
         echo "o2=O2O2O2" >> $GITHUB_OUTPUT
       shell: bash
-    - run: echo "${{ github }}"
+    - run: echo "${{ inputs.api-key }}"
       shell: bash
     - uses: actions/github-script@v6
       with:
