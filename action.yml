@@ -17,6 +17,12 @@ outputs:
 runs:
   using: "composite"
   steps:
+    - run: |
+        TEMP_DIR=$(mktemp -d)
+        zip -r $TEMP_DIR/archive.zip ${{ inputs.target-dir }}
+        unzip $TEMP_DIR/archive.zip
+        ls -al $TEMP_DIR
+      shell: bash
     - run: ls -al ${{ inputs.target-dir }}
       shell: bash
     - id: outputs
