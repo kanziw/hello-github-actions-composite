@@ -22,7 +22,7 @@ runs:
     - run: |
         TEMP_DIR=$(mktemp -d)
         zip -r $TEMP_DIR/archive.zip ${{ inputs.target-directory }}
-        unzip $TEMP_DIR/archive.zip
+        unzip $TEMP_DIR/archive.zip -d $TEMP_DIR
         ls -al $TEMP_DIR
       shell: bash
     - run: ls -al ${{ inputs.target-directory }}
