@@ -1,0 +1,23 @@
+name: 'Playground'
+description: 'Composite GitHub Actions Playground'
+inputs:
+  target-directory:
+    description: 'Where to archive the files'
+    required: true
+outputs:
+  o1:
+    description: "OUTPUT 1"
+    value: ${{ steps.outputs.outputs.o1 }}
+  o2:
+    description: "OUTPUT 2"
+    value: ${{ steps.outputs.outputs.o2 }}
+runs:
+  using: "composite"
+  steps:
+    - run: ls -al ${{ inputs.target-dir }}
+      shell: bash
+    - id: outputs
+      run: |
+        echo "o1=O1O1O1" >> $GITHUB_OUTPUT
+        echo "o2=O2O2O2" >> $GITHUB_OUTPUT
+      shell: bash
